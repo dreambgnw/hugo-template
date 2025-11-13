@@ -1,0 +1,337 @@
+/* =======================================
+   🌤 Suiran Light Style — Harenosora Edition
+   （ライト専用・透明感のある水光トーン）
+======================================= */
+
+/* --- Import Sections --- */
+@import url("./base.css");
+@import url("./layout.css");
+@import url("./nav-menu.css");
+@import url("./home.css");
+@import url("./links.css");
+@import url("./author.css");
+@import url("./content-unified.css");
+
+
+/* ------------------------------
+   📘 Footer
+------------------------------ */
+.site-footer {
+  position: static;
+  width: 100%;
+  margin-top: 60px;
+  padding: 20px 0;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+}
+.site-footer a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+.site-footer a:hover {
+  text-decoration: underline;
+  color: var(--accent-color);
+}
+
+/* ------------------------------
+   🧩 Table Style
+------------------------------ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  overflow-x: auto; /* Add this for horizontal scrolling on small screens */
+}
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+th {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-weight: 600;
+}
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+tr:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+/* ------------------------------
+   🧭 Floating Menu + Center Modal
+------------------------------ */
+
+/* FAB（開閉ボタン） */
+.menu-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: background 0.25s ease, transform 0.25s ease;
+  z-index: 1200;
+}
+.menu-fab span,
+.menu-fab::before,
+.menu-fab::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2.5px;
+  background: #fff;
+  border-radius: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+.menu-fab span { top: 50%; transform: translate(-50%, -50%); }
+.menu-fab::before { top: calc(50% - 8px); }
+.menu-fab::after  { top: calc(50% + 8px); }
+
+/* ✕ 状態 */
+.menu-fab.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+  top: 50%;
+}
+.menu-fab.active::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+  top: 50%;
+}
+.menu-fab.active span { opacity: 0; }
+
+.menu-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+.menu-fab:active { transform: scale(0.95); }
+
+/* --- Center Modal Menu --- */
+.center-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(217,238,245,0.9);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  transition: opacity 0.3s ease;
+}
+.center-menu.active {
+  display: flex;
+  opacity: 1;
+}
+.center-menu-content {
+  position: relative;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  width: min(90%, 420px);
+  padding: 28px 24px 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.4s cubic-bezier(0.25,1,0.3,1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- メニューリスト --- */
+.menu-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+.menu-list a {
+  display: block;
+  padding: 12px 16px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.menu-list a:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+/* --- サブメニュー --- */
+.submenu {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.submenu a {
+  padding: 10px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+.submenu a:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+/* --- FAB非表示（メニュー開時） --- */
+.center-menu.active ~ .menu-fab {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* ------------------------------
+   🌿 Global Typography
+------------------------------ */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  text-align: left;
+}
+h1, h2, h3, h4, h5, h6, p, li, a, span {
+  text-align: left;
+}
+.center-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto; /* ← iPhoneでのブロック防止 */
+}
+
+.center-menu.active {
+  display: flex;
+}
+
+.search-input {
+  font-size: 0.95rem;          /* 少し小さく調整 */
+  padding: 10px 14px;          /* 上下を詰める */
+  line-height: 1.4;            /* 縦バランス調整 */
+}
+
+::placeholder {
+  color: #b0b9c4;
+  font-size: 0.9rem;
+  opacity: 1;
+  line-height: 1.4;
+}
+
+.design-history {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin: 3rem auto;
+  max-width: 700px;
+}
+.design-history h2 {
+  font-family: "Harenosora Mincho", "Noto Serif JP", serif, "Honoka Shin Mincho";
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.design-history p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.design-link {
+  display: inline-block;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.design-link:hover {
+  background: var(--accent-color-dark);
+}
+/* ===============================
+   🧭 Menu Button — Always Visible (PC対応)
+=============================== */
+
+/* ボタン常時表示 */
+.menu-text-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1500;
+  display: flex !important; /* ← 常に表示 */
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-color);
+  color: #fff;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+/* ホバー時の軽い浮き上がり */
+.menu-text-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* メニュー開閉時 */
+.menu-text-toggle.active {
+  background: var(--subtext-color);
+  font-size: 22px; /* ✕の文字を大きく */
+  font-weight: bold;
+}
+
+/* PCでも表示（以前 display:none だった部分を上書き） */
+@media (min-width: 768px) {
+  .menu-text-toggle {
+    display: flex !important;
+  }
+}

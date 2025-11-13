@@ -1,0 +1,14 @@
+baseURL = 'https://hogus.work/'
+theme = "hogusource"
+languageCode = "ja"
+title = "hogusource codes"
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
+[markup]
+  [markup.highlight]
+    style = "dracula"
+    lineNos = false
+    noClasses = false

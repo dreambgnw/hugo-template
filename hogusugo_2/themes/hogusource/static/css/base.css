@@ -1,0 +1,121 @@
+/* =======================================
+   🌤 Harenosora Base Theme - Cleaned
+   (Unified Global Styles)
+======================================= */
+
+@font-face {
+  font-family: "Harenosora Mincho";
+  font-family: "Honoka";
+  src: url("/fonts/Honoka.otf") format("opentype");
+  font-display: swap;
+}
+:root {
+  --bg-color: #e2f3f9;
+  --text-color: #102a43;
+  --subtext-color: #4f6c8d;
+  --card-bg: #ffffff;
+  --border-color: #c2d6e2;
+  --accent-color: #5ca9c9;
+  --link-color: #3b7ca6;
+    html {
+       --bg-rgb: 255, 255, 255;   /* Light背景のRGB */
+       --layer-opacity: 0.2;      /* ← 透明度を統一管理する値 */
+    }
+    html.dark-theme {
+      --bg-rgb: 15, 20, 30;       /* Dark背景のRGB */
+      --layer-opacity: 0.2;
+    }
+  }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Harenosora Mincho", "Noto Serif JP", serif, "Honoka";
+  line-height: 1.9;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* --- Common Elements --- */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--accent-color);
+}
+
+/* --- Card Base --- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+}
+.card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(91,167,200,0.25);
+}
+
+/* --- Footer --- */
+.site-footer {
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 60px;
+  text-align: center;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+.site-footer a {
+  color: var(--accent-color);
+}
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+th {
+  background-color: var(--bg-color);
+  font-weight: 600;
+}
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+tr:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+/* --- Scroll Lock for Menu --- */
+html.is-scroll-locked {
+  overflow: hidden;
+}
+
+/* --- Dark Mode Theme --- */
+html.dark-theme {
+  --bg-color: #1a202c;
+  --text-color: #e2e8f0;
+  --subtext-color: #a0aec0;
+  --card-bg: #2d3748;
+  --border-color: #4a5568;
+  /* --accent-color and --link-color remain the same */
+}
